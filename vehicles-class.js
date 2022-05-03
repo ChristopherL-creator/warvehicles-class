@@ -1,23 +1,43 @@
 class Vehicles{ 
 
-    constructor(name, type, producer, yop, speed, isRetired){ 
-
+    constructor(name, producer, yop, cost, speed, isRetired, tax){ 
         this.name = name; 
-        this.type = type; 
         this.producer = producer; 
         this.yop = yop; 
+        this.cost = cost;
         this.speed = speed;
-        this.isRetired = isRetired;
+        this.isRetired = isRetired; 
+        this.tax = tax;
+
     }
-     
-    getAge(){ 
-        const now = new Date(); 
-        const year = now.getFullYear(); 
-        const age = year - this.yop; 
-        return age;
+
+    toString(){ 
+        const retired = this.isRetired === 'y' ? 'Yes': 'No'; 
+
+        const vehicleString = 'Name: ' + this.name + '\n' + 
+                              'Producer: ' + this.producer + '\n' + 
+                              'Year of Production: ' + this.yop + '\n'+ 
+                              'Cost: ' + this.getPublicPrice().toFixed(2) + '$' + '\n' + 
+                              'Speed: ' + this.avgMaxSpeed() + ' km/h' + '\n' + 
+                              'Is Retired: ' + retired; 
+        
+        return vehicleString;
     } 
 
-    avgMaxSpeed(speed){ 
+    getPublicPrice(){ 
+        const tax = this.cost * this.tax / 100; 
+        const publicPrice = this.cost + tax; 
+        const roundedPublicPrice = this.round(publicPrice, 2); 
+        return roundedPublicPrice;
+    }
+
+     round(number, decimalPlace){ 
+         const roundedString = number.toFixed(decimalPlace); 
+         const roundedNumber = parseFloat(roundedString); 
+         return roundedNumber;
+     } 
+
+     avgMaxSpeed(){ 
 
         let maxSpeed = 0;
                 
@@ -30,20 +50,5 @@ class Vehicles{
             
         return maxSpeed;
     } 
-
-    toString(){ 
-        
-        const type = this.type === 't' ? 'tank' : 'aircraft'; 
-        const retired = this.isRetired ==='y' ? 'Yes': 'No';
     
-        const vehicleString = 'Name: ' + this.name + '\n' + 
-                              'type: ' + type + '\n' + 
-                              'Producer: ' + this.producer + '\n' + 
-                              'Year of Production: ' + this.yop + '\n'+  
-                              'Service: ' + this.getAge() + '\n' + 
-                              'Speed: ' + this.avgMaxSpeed() + ' km/h' + '\n' + 
-                              'Retired: ' + retired;
-        return vehicleString;
-    }
-
 }

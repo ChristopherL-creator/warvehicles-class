@@ -8,7 +8,6 @@ class Vehicles{
         this.speed = speed;
         this.isRetired = isRetired; 
         this.tax = tax;
-
     }
 
     toString(){ 
@@ -16,7 +15,7 @@ class Vehicles{
 
         const vehicleString = 'Name: ' + this.name + '\n' + 
                               'Producer: ' + this.producer + '\n' + 
-                              'Year of Production: ' + this.yop + '\n'+ 
+                              'Year of production: ' + this.yop + '\n'+ 
                               'Cost: ' + this.getPublicPrice().toFixed(2) + '$' + '\n' + 
                               'Speed: ' + this.avgMaxSpeed() + ' km/h' + '\n' + 
                               'Is Retired: ' + retired; 

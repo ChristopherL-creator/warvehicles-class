@@ -5,12 +5,12 @@
 // console.log(aircraft1.aircraftToString());  
 
 //  correzione: 
-const tank = new Tank('Panzer IV', 't', 'Krupp', 1935, 't', 50000, [43, 37], true, 'Acciao');
+const tank = new Tank('Panzer IV', Tank.TYPE.Tank, 'Krupp', 1935, 't', 50000, [43, 37], true, 'Acciao');
 
 console.log(tank.toString());
 
 
-const aircraft = new Aircraft('B52', 'b', 'Boeing', 1950, 9250000, [850, 700], false, 11000);
+const aircraft = new Aircraft('B52', Aircraft.TYPE.Bomber, 'Boeing', 1950, 9250000, [850, 700], false, 11000);
 
 
 console.log(aircraft.toString());

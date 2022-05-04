@@ -23,7 +23,7 @@ class Vehicle{
       // const retired3 = retired2;
   
       return 'Nome: ' + this.name + '\n' +
-             'Tipo: ' + this.getType() + '\n' +
+             'Tipo: ' + this.type + '\n' +
              'Produttore: ' + this.producer + '\n' +
              'Anno: ' + this.yop + '\n' +
              'Costo: ' + this.getPrice() + '\n' +
@@ -37,8 +37,13 @@ class Vehicle{
   
     getPrice(){
       const tax = this.cost * this.tax / 100;
-      const publicPrice = this.cost + tax;
-      const rounded = this.round(publicPrice, 2);
+      let publicPrice = this.cost + tax;
+     
+      if (this.type === Aircraft.TYPE.Bomber) {
+        publicPrice = publicPrice + 1000;
+      } 
+      
+      const rounded = this.round(publicPrice, 2); 
       return rounded;
     }
   
@@ -55,7 +60,14 @@ class Vehicle{
   
   }
   
-  class Tank extends Vehicle{
+  class Tank extends Vehicle{ 
+
+    static TYPE = { 
+      Tank: 'Carro Aramto', 
+      SPG: 'Semovente', 
+      Recon: 'Ricognizione', 
+      Transport: 'Trasporto,'
+    }
   
     constructor(name, type, producer, yop, suspension, cost, speed, isRetired, armour){
       super(name, type, producer, yop, cost, speed, isRetired, 30);
@@ -84,7 +96,14 @@ class Vehicle{
   
   }
   
-  class Aircraft extends Vehicle{
+  class Aircraft extends Vehicle{ 
+//  creo sequenza di scelte, ma limitate;
+    static TYPE = { 
+      Bomber: 'Bombardiere', 
+      Helicopter: 'Elicottero', 
+      Figther: 'Caccia', 
+      Trainer: 'Addestratore',
+    }
   
     constructor(name, type, producer, yop, cost, speed, isRetired, altitude) {
       super(name, type, producer, yop, cost, speed, isRetired, 10);

@@ -66,7 +66,7 @@ class Vehicle{
       Tank: 'Carro Aramto', 
       SPG: 'Semovente', 
       Recon: 'Ricognizione', 
-      Transport: 'Trasporto,'
+      Transport: 'Trasporto',
     }
   
     constructor(name, type, producer, yop, suspension, cost, speed, isRetired, armour){
